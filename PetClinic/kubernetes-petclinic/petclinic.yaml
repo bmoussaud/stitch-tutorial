@@ -13,10 +13,15 @@ spec:
     children:
       - name: "1.0"
         type: udm.DeploymentPackage
-        orchestrator:
-          - parallel-by-dependency
         undeployDependencies: true
         deployables:
           - name: pet-clinic
             type: k8s.ResourcesFile
             file: !file "manifests/petclinic-service.yaml"
+      - name: "2.0"
+        type: udm.DeploymentPackage
+        undeployDependencies: true
+        deployables:
+          - name: pet-clinic
+            type: openshift.ResourcesFile
+            file: !file "manifests/petclinic-service-openshift.yaml"
